@@ -1,0 +1,38 @@
+
+<h4>Cart Details</h4>
+
+<span *ngIf="cartData.length == 0" class="nocart">
+
+      <h2>There is not product data present in cart</h2>
+      <a (click)="productPage()">add Product to the cart</a>
+</span>
+
+
+<span *ngIf="cartData.length > 0">
+<table class="table table-striped table-bordered">
+  <tr class="table-warning">
+    <th>Id</th>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Quantity</th>
+  </tr>
+  <tr *ngFor="let data of cartData">
+    <td>{{data.id}}</td>
+    <td>{{data.title}}</td>
+    <td>{{data.price}}</td>
+    <td>
+      <button style="color: skyblue;" (click)="addToCart(data)">+</button>
+          {{data.qty}}
+      <button style="color: red;" (click)="deleteFromCart(data)">-</button>
+    </td>
+  </tr>
+
+  <tr>
+
+    <td colspan="2" style="font-size: 20px;" class="text-success">Total</td>
+    <td>{{totalPrice}}</td>
+    <td>{{totalQty}}</td>
+
+  </tr>
+</table>
+</span>
